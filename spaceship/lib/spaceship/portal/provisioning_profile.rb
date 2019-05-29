@@ -474,7 +474,7 @@ module Spaceship
       def certificate_valid?
         return false if (certificates || []).count == 0
         certificates.each do |c|
-          if Spaceship::Portal::Certificate.all(mac: mac?).collect(&:id).include?(c.id)
+          if Spaceship::Portal::Certificate.all(mac: mac?).collect(&:id).include?(c["certificateId"])
             return true
           end
         end
